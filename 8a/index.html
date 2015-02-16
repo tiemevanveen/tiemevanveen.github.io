@@ -39,6 +39,7 @@
 	}
 	.eighta-input-inline{
 		padding-right: 10px;
+		font-weight: normal;
 	}
 	.eighta-input-inline input{
 		margin-right: 5px;
@@ -50,7 +51,16 @@
 
 window.onload = function(e){
 	$('#TextboxAscentDate').datepicker({ format: "yyyy-mm-dd" });
+
+	$(function(){
+    $('.checkboxAscentSH').click(function (e) {
+    	$('.checkboxAscentSH').prop('checked', false);
+    	$(e.target).prop('checked', true);
+    });
+});
+
 }
+
 
 </script>
 
@@ -105,6 +115,7 @@ window.onload = function(e){
 					<input  type="checkbox"
 							name="ListboxAscentSH"
 							value="8"
+							class="checkboxAscentSH"
 
 							aria-label="Yes">
 					Soft
@@ -114,6 +125,7 @@ window.onload = function(e){
 					<input  type="checkbox"
 							name="ListboxAscentSH"
 							value="16"
+							class="checkboxAscentSH"
 
 							aria-label="Yes">
 					Hard
@@ -546,7 +558,7 @@ window.onload = function(e){
 			</div>
 			<div class="col-xs-4 col-md-12">
 				<div class="input-group input-group-lg">
-					<input class="form-control rating" type="number" id="ListboxAscentRate" value="2" data-min="1" data-max="3" />
+					<input class="form-control rating" type="number" id="ListboxAscentRate" data-min="1" data-max="3" />
 				</div>
 			</div>
 		</div>
