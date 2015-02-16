@@ -1,1 +1,626 @@
-test
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head><meta charset="utf-8"/><title>
+	8a.nu - Edit Ascent
+</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1 max-scale=1" /> -->
+		<link rel="stylesheet" href="dist/css/styles.min.css" media="screen" />
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+			<script src="../bower_components/respond/dest/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+	<div class="container">
+		<form name="form1" method="post" action="BetaEditAscent.aspx?ID=3258999&amp;AscentType=0&amp;AscentClass=0" id="form1" class="form-horizontal">
+			<fieldset>
+				<h2>Add / Edit Ascent</h2>
+
+
+
+<!-- <div class="AscentAdminTable"> -->
+
+<!-- <div id="ctl06_ErrorMSContainer" class="alert alert-dismissable alert-danger">
+	<button type="button" class="close" data-dismiss="alert">x</button>
+	<span id="ctl06_LabelInsertErrorMSG"></span>
+</div> -->
+
+<style type="text/css">
+	.rating-input{
+		font-size: 1.5em;
+	}
+	.gradepicker{
+		min-width: 60px !important;
+	}
+	.eighta-input-inline{
+		padding-right: 10px;
+	}
+	.eighta-input-inline input{
+		margin-right: 5px;
+	}
+</style>
+
+
+<script>
+
+window.onload = function(e){
+	$('#TextboxAscentDate').datepicker({ format: "yyyy-mm-dd" });
+}
+
+</script>
+
+<!-- Grade -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="DropDownListAscentGrade" >
+		Grade
+	</label>
+	<div class="col-xs-3 col-sm-2 col-md-1">
+		<select name="ctl06$DropDownListAscentGrade" id="ctl06_DropDownListAscentGrade" class="form-control gradepicker">
+	<option value="0">-</option>
+	<option value="5">2</option>
+	<option value="6">3a</option>
+	<option value="7">3b</option>
+	<option value="8">3c</option>
+	<option value="9">4a</option>
+	<option value="10">4b</option>
+	<option value="11">4c</option>
+	<option value="12">5a</option>
+	<option value="13">5b</option>
+	<option value="14">5c</option>
+	<option value="15">6a</option>
+	<option value="16">6a+</option>
+	<option value="17">6b</option>
+	<option value="18">6b+</option>
+	<option value="19">6c</option>
+	<option value="20">6c+</option>
+	<option value="21">7a</option>
+	<option selected="selected" value="22">7a+</option>
+	<option value="23">7b</option>
+	<option value="24">7b+</option>
+	<option value="25">7c</option>
+	<option value="26">7c+</option>
+	<option value="27">8a</option>
+	<option value="28">8a+</option>
+	<option value="29">8b</option>
+	<option value="30">8b+</option>
+	<option value="31">8c</option>
+	<option value="32">8c+</option>
+	<option value="33">9a</option>
+	<option value="34">9a+</option>
+	<option value="35">9b</option>
+	<option value="36">9b+</option>
+	<option value="37">9c</option>
+
+</select>
+	</div>
+
+	<div class="col-xs-6 col-sm-7">
+
+				<label class="checkbox-inline">
+					<input  type="checkbox"
+							name="ListboxAscentSH"
+							value="8"
+
+							aria-label="Yes">
+					Soft
+				</label>
+
+				<label class="checkbox-inline">
+					<input  type="checkbox"
+							name="ListboxAscentSH"
+							value="16"
+
+							aria-label="Yes">
+					Hard
+				</label>
+
+	</div>
+</div>
+
+<!-- Style -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="LabelAscentStyleHead">
+		Style
+	</label>
+	<div class="col-xs-9 col-sm-10 col-md-11">
+		<div class="row">
+
+					<div class="col-xs-6 col-sm-2 col-lg-1">
+						<label class="radio-inline">
+							<input  type="radio"
+									name="ListboxAscentStyle"
+									value="1"
+									checked
+									aria-label="Yes">
+							Redpoint
+						</label>
+					</div>
+
+					<div class="col-xs-6 col-sm-2 col-lg-1">
+						<label class="radio-inline">
+							<input  type="radio"
+									name="ListboxAscentStyle"
+									value="2"
+
+									aria-label="Yes">
+							Flash
+						</label>
+					</div>
+
+					<div class="col-xs-6 col-sm-2 col-lg-1">
+						<label class="radio-inline">
+							<input  type="radio"
+									name="ListboxAscentStyle"
+									value="3"
+
+									aria-label="Yes">
+							Onsight
+						</label>
+					</div>
+
+					<div class="col-xs-6 col-sm-2 col-lg-1">
+						<label class="radio-inline">
+							<input  type="radio"
+									name="ListboxAscentStyle"
+									value="4"
+
+									aria-label="Yes">
+							Toprope
+						</label>
+					</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Name -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="LabelAscentName">
+		Name
+	</label>
+	<div class="col-xs-8 col-sm-6">
+		<input name="ctl06$TextBoxAscentName" placeholder="Route Name" type="text" value="" id="ctl06_TextBoxAscentName" class="form-control" />
+	</div>
+</div>
+
+<!-- Location -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="LabelAscentCrag">
+		Location
+	</label>
+	<!-- <label for="LabelAscentCragCountryHead" class="col-xs-3 col-sm-2 control-label">
+		<span id="ctl06_LabelAscentCragCountryHead">Crag Country</span>
+	</label> -->
+	<div class="col-xs-9 col-sm-10">
+		<div class="row">
+			<div class="col-xs-12 col-sm-4">
+				<select name="ctl06$ListBoxAscentCountry" id="ctl06_ListBoxAscentCountry" class="form-control">
+	<option value="">-</option>
+	<option selected="selected" value="SWE">Sweden</option>
+	<option value="AUS">Australia</option>
+	<option value="FRA">France</option>
+	<option value="GRC">Greece</option>
+	<option value="NOR">Norway</option>
+	<option value="ESP">Spain</option>
+	<option value="THA">Thailand</option>
+	<option value="USA">United States</option>
+	<option value="">- All Countries -</option>
+	<option value="ALB">Albania</option>
+	<option value="DZA">Algeria</option>
+	<option value="ASM">American Samoa</option>
+	<option value="AND">Andorra</option>
+	<option value="AGO">Angola</option>
+	<option value="AIA">Anguilla</option>
+	<option value="ATA">Antarctica</option>
+	<option value="ATG">Antigua &amp; Barbuda</option>
+	<option value="ARG">Argentina</option>
+	<option value="ARM">Armenia</option>
+	<option value="ABW">Aruba</option>
+	<option value="AUS">Australia</option>
+	<option value="AUT">Austria</option>
+	<option value="AZE">Azerbaijan</option>
+	<option value="BHS">Bahamas</option>
+	<option value="BHR">Bahrain</option>
+	<option value="BGD">Bangladesh</option>
+	<option value="BRB">Barbados</option>
+	<option value="BLR">Belarus</option>
+	<option value="BEL">Belgium</option>
+	<option value="BLZ">Belize</option>
+	<option value="BEN">Benin</option>
+	<option value="BMU">Bermuda</option>
+	<option value="BTN">Bhutan</option>
+	<option value="BOL">Bolivia</option>
+	<option value="BIH">Bosnia &amp; Herzegowina</option>
+	<option value="BWA">Botswana</option>
+	<option value="BVT">Bouvet Island</option>
+	<option value="BRA">Brazil</option>
+	<option value="IOT">British Indian Ocean Terr.</option>
+	<option value="BRN">Brunei Darussalam</option>
+	<option value="BGR">Bulgaria</option>
+	<option value="BFA">Burkina Faso</option>
+	<option value="MMR">Burma (Myanmar)</option>
+	<option value="BDI">Burundi</option>
+	<option value="KHM">Cambodia</option>
+	<option value="CMR">Cameroon</option>
+	<option value="CAN">Canada</option>
+	<option value="CPV">Cape Verde</option>
+	<option value="CYM">Cayman Islands</option>
+	<option value="CAF">Central African Rep</option>
+	<option value="TCD">Chad</option>
+	<option value="CHL">Chile</option>
+	<option value="CHN">China</option>
+	<option value="CXR">Christmas Island</option>
+	<option value="CCK">Cocos (Keeling) Isles</option>
+	<option value="COL">Colombia</option>
+	<option value="COM">Comoros</option>
+	<option value="COG">Congo</option>
+	<option value="COD">Congo, The Democratic Rep</option>
+	<option value="COK">Cook Islands</option>
+	<option value="CRI">Costa Rica</option>
+	<option value="HRV">Croatia</option>
+	<option value="CUB">Cuba</option>
+	<option value="CYP">Cyprus</option>
+	<option value="CZE">Czech Republic</option>
+	<option value="DNK">Denmark</option>
+	<option value="DJI">Djibouti</option>
+	<option value="DMA">Dominica</option>
+	<option value="DOM">Dominican Republic</option>
+	<option value="TMP">East Timor</option>
+	<option value="ECU">Ecuador</option>
+	<option value="EGY">Egypt</option>
+	<option value="SLV">El Salvador</option>
+	<option value="GNQ">Equatorial Guinea</option>
+	<option value="ERI">Eritrea</option>
+	<option value="EST">Estonia</option>
+	<option value="ETH">Ethiopia</option>
+	<option value="FLK">Falkland Islands (Malvinas)</option>
+	<option value="FRO">Faroe Islands</option>
+	<option value="FJI">Fiji</option>
+	<option value="FIN">Finland</option>
+	<option value="FRA">France</option>
+	<option value="FXX">France, Metro</option>
+	<option value="GUF">French Guiana</option>
+	<option value="PYF">French Polynesia</option>
+	<option value="ATF">French Southern Terr.</option>
+	<option value="GAB">Gabon</option>
+	<option value="GMB">Gambia</option>
+	<option value="GEO">Georgia</option>
+	<option value="DEU">Germany</option>
+	<option value="GHA">Ghana</option>
+	<option value="GIB">Gibraltar</option>
+	<option value="GRC">Greece</option>
+	<option value="GRL">Greenland</option>
+	<option value="GRD">Grenada</option>
+	<option value="GLP">Guadeloupe</option>
+	<option value="GUM">Guam</option>
+	<option value="GTM">Guatemala</option>
+	<option value="GIN">Guinea</option>
+	<option value="GNB">Guinea-Bissau</option>
+	<option value="GUY">Guyana</option>
+	<option value="HTI">Haiti</option>
+	<option value="HMD">Heard And Mc Donald Isles</option>
+	<option value="VAT">Holy See (Vatican)</option>
+	<option value="HND">Honduras</option>
+	<option value="HKG">Hong Kong</option>
+	<option value="HUN">Hungary</option>
+	<option value="ISL">Iceland</option>
+	<option value="IND">India</option>
+	<option value="IDN">Indonesia</option>
+	<option value="IRN">Iran</option>
+	<option value="IRQ">Iraq</option>
+	<option value="IRL">Ireland</option>
+	<option value="ISR">Israel</option>
+	<option value="ITA">Italy</option>
+	<option value="CIV">Ivory Coast (Cote D&#39;Ivoire)</option>
+	<option value="JAM">Jamaica</option>
+	<option value="JPN">Japan</option>
+	<option value="JOR">Jordan</option>
+	<option value="KAZ">Kazakhstan</option>
+	<option value="KEN">Kenya</option>
+	<option value="KIR">Kiribati</option>
+	<option value="PRK">Korea, Dem People&#39;s Rep</option>
+	<option value="KOR">Korea, Republic Of</option>
+	<option value="KWT">Kuwait</option>
+	<option value="KGZ">Kyrgyzstan</option>
+	<option value="LAO">Laos</option>
+	<option value="LVA">Latvia</option>
+	<option value="LBN">Lebanon</option>
+	<option value="LSO">Lesotho</option>
+	<option value="LBR">Liberia</option>
+	<option value="LBY">Libya</option>
+	<option value="LIE">Liechtenstein</option>
+	<option value="LTU">Lithuania</option>
+	<option value="LUX">Luxembourg</option>
+	<option value="MAC">Macau</option>
+	<option value="MKD">Macedonia (Republic of)</option>
+	<option value="MDG">Madagascar</option>
+	<option value="MWI">Malawi</option>
+	<option value="MYS">Malaysia</option>
+	<option value="MDV">Maldives</option>
+	<option value="MLI">Mali</option>
+	<option value="MLT">Malta</option>
+	<option value="MHL">Marshall Islands</option>
+	<option value="MTQ">Martinique</option>
+	<option value="MRT">Mauritania</option>
+	<option value="MUS">Mauritius</option>
+	<option value="MYT">Mayotte</option>
+	<option value="MEX">Mexico</option>
+	<option value="FSM">Micronesia, Fed States</option>
+	<option value="MDA">Moldova, Rep</option>
+	<option value="MCO">Monaco</option>
+	<option value="MNG">Mongolia</option>
+	<option value="MSR">Montserrat</option>
+	<option value="MAR">Morocco</option>
+	<option value="MOZ">Mozambique</option>
+	<option value="NAM">Namibia</option>
+	<option value="NRU">Nauru</option>
+	<option value="NPL">Nepal</option>
+	<option value="NLD">Netherlands</option>
+	<option value="ANT">Netherlands Antilles</option>
+	<option value="NCL">New Caledonia</option>
+	<option value="NZL">New Zealand</option>
+	<option value="NIC">Nicaragua</option>
+	<option value="NER">Niger</option>
+	<option value="NGA">Nigeria</option>
+	<option value="NIU">Niue</option>
+	<option value="NFK">Norfolk Island</option>
+	<option value="MNP">Northern Mariana Isles</option>
+	<option value="NOR">Norway</option>
+	<option value="OMN">Oman</option>
+	<option value="PAK">Pakistan</option>
+	<option value="PLW">Palau</option>
+	<option value="PAN">Panama</option>
+	<option value="PNG">Papua New Guinea</option>
+	<option value="PRY">Paraguay</option>
+	<option value="PER">Peru</option>
+	<option value="PHL">Philippines</option>
+	<option value="PCN">Pitcairn</option>
+	<option value="POL">Poland</option>
+	<option value="PRT">Portugal</option>
+	<option value="PRI">Puerto Rico</option>
+	<option value="QAT">Qatar</option>
+	<option value="REU">Reunion</option>
+	<option value="ROM">Romania</option>
+	<option value="RUS">Russian Federation</option>
+	<option value="RWA">Rwanda</option>
+	<option value="KNA">Saint Kitts &amp; Nevis</option>
+	<option value="LCA">Saint Lucia</option>
+	<option value="VCT">Saint Vincent &amp; Grenadines</option>
+	<option value="WSM">Samoa</option>
+	<option value="SMR">San Marino</option>
+	<option value="STP">Sao Tome &amp; Principe</option>
+	<option value="SAU">Saudi Arabia</option>
+	<option value="SEN">Senegal</option>
+	<option value="SYC">Seychelles</option>
+	<option value="SLE">Sierra Leona</option>
+	<option value="SGP">Singapore</option>
+	<option value="SVK">Slovakia (Slovak Rep)</option>
+	<option value="SVN">Slovenia</option>
+	<option value="SLB">Solomon Islands</option>
+	<option value="SOM">Somalia</option>
+	<option value="ZAF">South Africa</option>
+	<option value="SGS">S Georgia &amp; Sandwich Isles</option>
+	<option value="ESP">Spain</option>
+	<option value="LKA">Sri Lanka</option>
+	<option value="SHN">St. Helena</option>
+	<option value="SPM">St. Pierre &amp; Miquelon</option>
+	<option value="SDN">Sudan</option>
+	<option value="SUR">Suriname</option>
+	<option value="SJM">Svalbard &amp; Jan Mayen Islands</option>
+	<option value="SWZ">Swaziland</option>
+	<option value="SWE">Sweden</option>
+	<option value="CHE">Switzerland</option>
+	<option value="SYR">Syria</option>
+	<option value="TWN">Taiwan</option>
+	<option value="TJK">Tajikistan</option>
+	<option value="TZA">Tanzania</option>
+	<option value="THA">Thailand</option>
+	<option value="TGO">Togo</option>
+	<option value="TKL">Tokelau</option>
+	<option value="TON">Tonga</option>
+	<option value="TTO">Trinidad &amp; Tobago</option>
+	<option value="TUN">Tunisia</option>
+	<option value="TUR">Turkey</option>
+	<option value="TKM">Turkmenistan</option>
+	<option value="TCA">Turks &amp; Caicos Islands</option>
+	<option value="TUV">Tuvalu</option>
+	<option value="UGA">Uganda</option>
+	<option value="UKR">Ukraine</option>
+	<option value="ARE">United Arab Emirates</option>
+	<option value="GBR">United Kingdom</option>
+	<option value="USA">United States</option>
+	<option value="UMI">US Minor Outlying Isles</option>
+	<option value="URY">Uruguay</option>
+	<option value="UZB">Uzbekistan</option>
+	<option value="VUT">Vanuatu</option>
+	<option value="VEN">Venezuela</option>
+	<option value="VNM">Viet Nam</option>
+	<option value="VGB">Virgin Isles (British)</option>
+	<option value="VIR">Virgin Isles (U.S.)</option>
+	<option value="WLF">Wallis &amp; Futuna Islands</option>
+	<option value="ESH">Western Sahara</option>
+	<option value="YEM">Yemen</option>
+	<option value="YUG">Yugoslavia</option>
+	<option value="ZMB">Zambia</option>
+	<option value="ZWE">Zimbabwe</option>
+	<option value="SRB">Serbia (Yugoslavia)</option>
+	<option value="UNK"> Kosovo</option>
+
+</select>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<input name="ctl06$TextboxAscentCrag" type="text" value="" id="ctl06_TextboxAscentCrag" class="form-control" placeholder="Crag" onkeyup="ajax_showOptions(this,&#39;getCountriesByLetters&#39;,event, 0)" />
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<input name="ctl06$TextboxAscentSector" type="text" id="ctl06_TextboxAscentSector" class="form-control" placeholder="Sector" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Notes -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="LabelAscentNoteHead">
+		Note
+	</label>
+	<div class="col-xs-9 col-sm-10 col-md-11">
+		<!-- <div class="row"> -->
+			<!-- <div class="col-xs-12"> -->
+
+						<label class="eighta-input-inline">
+							<input  type="checkbox"
+								name="ListboxAscentNote"
+								value="1"
+
+								aria-label="Yes">
+							FA
+						</label>
+
+
+						<label class="eighta-input-inline">
+							<input  type="checkbox"
+								name="ListboxAscentNote"
+								value="2"
+
+								aria-label="Yes">
+							Second GO
+						</label>
+
+
+						<label class="eighta-input-inline">
+							<input  type="checkbox"
+								name="ListboxAscentNote"
+								value="4"
+
+								aria-label="Yes">
+							Traditional
+						</label>
+
+
+						<label class="eighta-input-inline">
+							<input  type="checkbox"
+								name="ListboxAscentNote"
+								value="64"
+
+								aria-label="Yes">
+							One Hang
+						</label>
+
+
+
+				<label class="eighta-input-inline">
+					<input type="checkbox" id="CheckBoxTry" name="CheckBoxTry" aria-label="Yes">
+					Tried/Hang Dog
+				</label>
+
+
+				<label class="eighta-input-inline">
+					<input type="checkbox" id="CheckBoxChipped" name="CheckBoxChipped" aria-label="Yes">
+					Chipped
+				</label>
+			<!-- </div>
+		</div> -->
+	</div>
+</div>
+
+<!-- Comment -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="LabelAscentCommentHead">
+		Comment
+	</label>
+	<div class="col-xs-9 col-sm-6">
+		<textarea name="ctl06$TextboxAscentComment" placeholder="How did you like the route..?" rows="2" cols="20" id="ctl06_TextboxAscentComment" class="form-control"></textarea>
+	</div>
+	<div class="col-xs-12 col-xs-offset-3 col-sm-offset-2 col-md-4 col-md-offset-0">
+		<div class="row">
+			<div class="col-xs-4 col-md-12">
+				<label class="checkbox-inline">
+					<input type="checkbox" id="CheckBoxRecommended" name="CheckBoxRecommended" checked="" aria-label="Yes">
+					Recommended
+				</label>
+			</div>
+			<div class="col-xs-4 col-md-12">
+				<div class="input-group input-group-lg">
+					<input class="form-control rating" type="number" id="ListboxAscentRate" value="2" data-min="1" data-max="3" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Date -->
+<div class="form-group">
+	<label class="col-xs-3 col-sm-2 col-md-1 control-label" for="LabelAscentDateHead">
+		Date
+	</label>
+	<div class="col-xs-9 col-sm-6">
+		<div class="input-group date">
+			<input id="TextboxAscentDate" type="text" class="form-control" value="2015-12-15">
+			<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+		</div>
+	</div>
+</div>
+
+<!-- Extra -->
+
+<div class="form-group">
+	<div class="col-xs-9 col-xs-offset-3 col-sm-offset-2 col-md-offset-1">
+		<!--  -->
+		<label class="eighta-input-inline">
+			<input type="checkbox" id="CheckBoxBlog" name="CheckBoxBlog" checked="" aria-label="Yes">
+			Post to fb wall
+		</label>
+
+		<label class="eighta-input-inline">
+			<input type="checkbox" id="CheckBoxDBAsc" name="CheckBoxDBAsc" aria-label="Yes">
+			DB Ascent
+		</label>
+
+		<label class="eighta-input-inline">
+			<input type="checkbox" id="CheckBoxExclude" name="CheckBoxExclude" aria-label="Yes">
+			Log-book, No score
+		</label>
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="col-xs-9 col-sm-4 col-xs-offset-3 col-md-offset-1">
+		<input class="btn btn-primary" type="submit" name="ButtonAddAscent" value="Add Ascent" id="ButtonAddAscent">
+		<input class="btn btn-default" type="submit" name="ButtonCancel" value="Cancel" id="ButtonCancel">
+	</asp:div>
+</div>
+
+				<div class="form-group">
+
+					<!-- <div class="col-sm-4 col-xs-10 col-sm-offset-2 col-xs-offset-2">
+
+
+						<input type="submit" name="ButtonEditAscent" value="Save Changes" id="ButtonEditAscent" class="btn btn-primary" />
+
+						<input type="submit" name="ButtonCancel" value="Cancel" id="ButtonCancel" class="btn btn-default" />
+
+						<input type="submit" name="ButtonDeleteAscent" value="Delete Ascent" id="ButtonDeleteAscent" class="btn btn-danger" />
+					</div> -->
+
+					<div class="col-sm-4 col-xs-10">
+
+					</div>
+
+				</div>
+
+			</fieldset>
+		</form>
+	</div>
+	<script src="dist/js/jquery.min.js"></script>
+	<script src="dist/js/bootstrap.min.js"></script>
+	<script src="dist/js/bootstrap-rating-input.min.js"></script>
+	<script src="dist/js/bootstrap-datepicker.js"></script>
+
+
+</body>
+</html>
