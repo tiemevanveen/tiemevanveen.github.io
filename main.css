@@ -1,0 +1,82 @@
+/*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+
+}
+
+body {
+    font-family: 'PT Mono', monospace;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+
+
+
+.title {
+    font-family: 'PT Mono', monospace;
+}
+
+.developer {
+    display: inline-block;
+}
+
+
+article {
+    margin-top: 2.5em;
+}
+
+.main article h1 {
+    font-size: 2em;
+    font-family: 'PT Mono', monospace;
+    line-height: 1.5em;
+}
+
+h2, h3, h4, h5 {
+    font-family: 'PT Mono', monospace;
+}
+
+@media only screen and (min-width: 768px) {
+    .title {
+        float: left;
+    }
+
+    .header-container {
+        margin-top: 4em;
+    }
+
+    .main article {
+        float: left;
+        width: 57%;
+    }
+
+    article {
+        margin-top: 1em;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .wrapper {
+        width: 1026px; /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
