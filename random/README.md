@@ -1,1 +1,1 @@
-Presentation on ES6/2016 tailored for Random Studio.
+Presentation on ES2015 tailored for Random Studio.
