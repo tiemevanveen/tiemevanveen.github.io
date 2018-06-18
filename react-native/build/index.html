@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React Native</title>
+    <meta name="description" content="Presentation on React Native tailored for Random Studio">
+    <meta name="author" content="Tieme van Veen">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <textarea id="source">name: inverse
+layout: true
+class: center, middle, inverse
+---
+
+#.red[React Native]
+.red[Random Studio] 2018-06-14
+
+<hr /> 
+
+View along download: 
+
+### "Expo App" for iOS: https://goo.gl/FgB4jp
+### "Expo App" for Android: https://goo.gl/fCKGhk
+
+
+---
+
+# next 60~90 minutes:  
+
+.pull-left[
+# React vs React Native
+# Getting started
+# CRNA & Expo
+]
+
+.pull-right[
+# Network requests
+# List Views
+# Navigation
+]
+
+---
+
+# Sample app: 
+
+.center[![CTA](https://i.imgur.com/HOPgujS.png)]
+
+---
+
+# Sample app:
+
+.center[![CTA](https://i.imgur.com/fFNjiaU.png)]
+
+---
+template: inverse
+#.red[React vs React Native]
+---
+layout: false
+class: center, middle
+
+#### Example: a call to action component:
+<br />
+
+.center[![CTA](https://i.imgur.com/fQKhcCH.png)]
+
+---
+layout: false
+.center[![CTA](https://i.imgur.com/fQKhcCH.png)]
+
+```js
+import React from 'react';
+
+const CTA = ({ buttonTitle, onClick, description }) => (
+  <div>
+    <div onClick={onClick}>{buttonTitle}</div>
+    <p>{description}</p>
+  </div>
+);
+
+```
+
+---
+layout: false
+
+.center[![CTA](https://i.imgur.com/fQKhcCH.png)]
+
+```js
+import { View, Text } from 'react-native';
+
+const CTA = ({ buttonTitle, description }) => (
+  <View>
+    <Text>{buttonTitle}</Text>
+    <Text>{description}</Text>
+  </View>
+);
+
+```
+
+---
+layout: false
+.center[![CTA](https://i.imgur.com/fQKhcCH.png)]
+
+```js
+import { View, Text, Button } from 'react-native';
+
+const CTA = ({ buttonTitle, onPress, description }) => (
+  <View>
+    <Button onPress={onPress}>
+      <Text>{buttonTitle}</Text>
+    </Button>
+    <Text>{description}</Text>
+  </View>
+);
+
+```
+
+---
+
+template: inverse
+#.red[Getting started]
+
+---
+template: inverse
+#.red[Lets write some code!]
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+#.red[Links]
+
+## https://facebook.github.io/react-native/
+## https://expo.io/ 
+
+
+    </textarea>
+    <script src="js/vendor/remark-fallback.js"></script>
+    <script src="js/vendor/remark-language.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
