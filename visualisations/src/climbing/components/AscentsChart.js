@@ -45,85 +45,65 @@ const colors = {
 };
 
 class AscentsChart extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    const { ascents } = props;
+
+    const points = ascents.map(ascent => [
+      new Moment(ascent.date).toDate().getTime(),
+      ascent
+    ]);
+
+    const ascentsPerDay = Object.entries(
+      ascents.reduce((res, ascent) => {
+        const day = new Moment(ascent.date).format("YYYY-MM-DD");
+        return { ...res, [day]: res[day] ? res[day] + 1 : 1 };
+      }, {})
+    )
+      .map(([date, count]) => [new Moment(date).toDate().getTime(), count])
+      .sort(([dateA], [dateB]) => (dateA < dateB ? -1 : dateA > dateB ? 1 : 0));
+
+    console.log("ascentsPerDay", ascentsPerDay[0]);
+    console.log("points", points[0]);
+
+    const series = new TimeSeries({
+      name: "Gust",
+      columns: ["time", "ascent"],
+      points
+    });
+
+    const dailySeries = series.fixedWindowRollup({
+      windowSize: "3d",
+      aggregation: { count: { ascent: count() } }
+    });
+
+    console.log("series", series.toJSON());
+    console.log("dailySeries", dailySeries.toJSON());
+
+    let begin = Moment(series.range().begin());
+    let end = Moment(series.range().end());
+    let diff = end.diff(begin, "days");
+    begin = begin.subtract(diff * 0.025, "days").toDate();
+    end = end.add(diff * 0.025, "days").toDate();
+    const startRange = new TimeRange([begin.getTime(), end.getTime()]);
+
     this.state = {
-      loading: true,
+      series,
+      dailySeries,
+      startRange,
+      timerange: startRange,
+      brushrange: startRange,
+      begin,
+      end,
       hover: null,
       highlight: null,
       selection: null,
-      timerange: undefined,
-      brushrange: undefined
     };
-  }
-
-  async componentWillMount() {
-    try {
-      const rawAscents = await fetchAscents('26910');
-      const ascents = transformAscents(rawAscents)
-      
-      const points = ascents.map(ascent => [
-        new Moment(ascent.date).toDate().getTime(),
-        ascent
-      ]);
-
-      const ascentsPerDay = Object.entries(
-        ascents.reduce((res, ascent) => {
-          const day = new Moment(ascent.date).format("YYYY-MM-DD");
-          return { ...res, [day]: res[day] ? res[day] + 1 : 1 };
-        }, {})
-      )
-        .map(([date, count]) => [new Moment(date).toDate().getTime(), count])
-        .sort(([dateA], [dateB]) => (dateA < dateB ? -1 : dateA > dateB ? 1 : 0));
-
-      console.log("ascentsPerDay", ascentsPerDay[0]);
-      console.log("points", points[0]);
-
-      const series = new TimeSeries({
-        name: "Gust",
-        columns: ["time", "ascent"],
-        points
-      });
-
-      const dailySeries = series.fixedWindowRollup({
-        windowSize: "3d",
-        aggregation: { count: { ascent: count() } }
-      });
-
-      console.log("series", series.toJSON());
-      console.log("dailySeries", dailySeries.toJSON());
-
-      let begin = Moment(series.range().begin());
-      let end = Moment(series.range().end());
-      let diff = end.diff(begin, "days");
-      begin = begin.subtract(diff * 0.025, "days").toDate();
-      end = end.add(diff * 0.025, "days").toDate();
-      const startRange = new TimeRange([begin.getTime(), end.getTime()]);
-
-      this.setState({
-        timerange: startRange,
-        brushrange: startRange,
-        startRange,
-        series,
-        dailySeries,
-        begin,
-        end,
-        loading: false,
-      })
-
-    } catch (error) {
-      console.log('error', error)
-      this.setState({
-        error: error.message,
-        loading: false,
-      })
-    }
-
   }
 
   // Handles when the brush changes the timerange
   handleTimeRangeChange = timerange => {
-
     if (timerange) {
       this.setState({ timerange, brushrange: timerange });
     } else {
@@ -131,48 +111,30 @@ class AscentsChart extends React.Component {
     }
   };
 
-  handleSelectionChanged = point => {
-    this.setState({
-      selection: point
-    });
-  };
-
-  handleMouseNear = point => {
-    this.setState({
-      highlight: point
-    });
-  };
+  handleSelectionChanged = point => this.setState({ selection: point });
+  handleMouseNear = point => this.setState({ highlight: point });
 
   render() {
-    if (this.state.error) {
-      return <div>Error: {this.state.error}</div>
-    }
-
-    if (this.state.loading) {
-      return <div>Loading...</div>
-    }
-
     const {
       startRange,
       series,
       dailySeries,
       begin,
       end,
+      highlight
     } = this.state;
 
-    // const highlight = this.state.highlight;
-    // // const formatter = format(".2f");
-    // let text = `Speed: - mph, time: -:--`;
+
     let infoValues = [];
-    // if (highlight) {
-    //   // const speedText = `${formatter(highlight.event.get(highlight.column))} mph`;
-    //   // text = `
-    //   //   Speed: ${speedText},
-    //   //   time: ${this.state.highlight.event.timestamp().toLocaleTimeString()}
-    //   // `;
-    //   // infoValues = [{ label: "Speed", value: speedText }];
-    // }
-    //
+    if (highlight) {
+      let ascent = highlight.event.get("ascent");
+      infoValues = [{
+        label: `${ascent.cragname} - ${ascent.name}`,
+        value: `${ascent.grade.labels.fra.routes} ${
+          ascent.isTry ? "attempt" : ascent.method.shorthand
+          }`
+      }];
+    }
 
     const brushStyle = {
       // boxShadow: "inset 0px 2px 5px -2px rgba(189, 189, 189, 0.75)",
@@ -280,8 +242,9 @@ class AscentsChart extends React.Component {
                       columns={["ascent.grade.id"]}
                       style={perEventStyle}
                       info={infoValues}
+                      infoTimeFormat={e => e.toLocaleDateString()}
                       infoHeight={28}
-                      infoWidth={110}
+                      infoWidth={400}
                       infoStyle={{
                         fill: "black",
                         color: "#DDD"
