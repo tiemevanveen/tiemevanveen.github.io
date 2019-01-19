@@ -1,6 +1,7 @@
 {
   "name": "visualisations",
   "version": "0.1.0",
+  "homepage": "http://teameh.github.io/visualisations/build/",
   "private": true,
   "dependencies": {
     "@types/jest": "23.3.13",
