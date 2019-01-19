@@ -17,9 +17,11 @@ class Ascents extends React.PureComponent {
     try {
       this.setState({ isLoading: true });
       const rawAscents = await fetchAscents(userId);
+      const ascents = transformAscents(rawAscents);
+      console.log('ascents', ascents)
       this.setState({
         userId,
-        ascents: transformAscents(rawAscents),
+        ascents,
         isLoading: false,
       });
     } catch (error) {

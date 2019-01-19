@@ -64,11 +64,8 @@ class AscentsChart extends React.Component {
       .map(([date, count]) => [new Moment(date).toDate().getTime(), count])
       .sort(([dateA], [dateB]) => (dateA < dateB ? -1 : dateA > dateB ? 1 : 0));
 
-    console.log("ascentsPerDay", ascentsPerDay[0]);
-    console.log("points", points[0]);
-
     const series = new TimeSeries({
-      name: "Gust",
+      name: "Ascents",
       columns: ["time", "ascent"],
       points
     });
@@ -113,6 +110,15 @@ class AscentsChart extends React.Component {
 
   handleSelectionChanged = point => this.setState({ selection: point });
   handleMouseNear = point => this.setState({ highlight: point });
+
+  getGradeLabel = value => {
+    const grade = AscentGrades[value];
+    if(grade) {
+      return grade.labels.fra.routes
+    }
+    console.error('unknown grade!', value)
+    return ''
+  }
 
   render() {
     const {
@@ -233,7 +239,7 @@ class AscentsChart extends React.Component {
                     max={series.max("ascent.grade.id") + 2}
                     style={YAxisStyle}
                     width="0"
-                    format={val => AscentGrades[val].labels.fra.routes}
+                    format={this.getGradeLabel}
                   />
                   <Charts>
                     <ScatterChart

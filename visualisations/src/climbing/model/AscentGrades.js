@@ -1,9 +1,17 @@
 export const AscentGrades = {
+    "0": {
+        id: 0,
+        score: 0,
+        labels: {
+            fra: { routes: "", boulder: "" },
+            usa: { routes: "", boulders: "" }
+        }
+    },
     "1": {
         id: 1,
         score: 0,
         labels: {
-            fra: { routes: "-", boulder: "-" },
+            fra: { routes: "", boulder: "" },
             usa: { routes: "3/4", boulders: "VB" }
         }
     },
