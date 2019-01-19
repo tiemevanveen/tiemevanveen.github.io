@@ -6,14 +6,14 @@ const query = queryString.parse(window.location.search);
 
 class UserIdInput extends React.Component {
   state = {
-    userId: query && query.userId && /^[0-9]*$/.test(query.userId) ? query.userId : '',
+    userId: query && query.userId && /^[0-9]+$/.test(query.userId) ? query.userId : '',
   };
 
   componentDidMount() {
     this.handleSubmit();
   }
 
-  checkUserId = value => /^[0-9]*$/.test(value)
+  checkUserId = value => /^[0-9]+$/.test(value)
 
   handleSubmit = (event) => {
     if(event) {
@@ -28,6 +28,7 @@ class UserIdInput extends React.Component {
   onClearUserId = () => {
     this.userIdInput.focus();
     this.setState({ userId: '' });
+    this.props.onSubmit()
   }
 
   onChangeUserId = (e) => {

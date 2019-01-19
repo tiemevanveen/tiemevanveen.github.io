@@ -10,7 +10,7 @@ class Ascents extends React.PureComponent {
     userId: undefined,
     ascents: [],
     isLoading: false,
-    error: false,
+    error: null,
   };
 
   onSubmitUserIdInput = async userId => {
@@ -22,6 +22,7 @@ class Ascents extends React.PureComponent {
       this.setState({
         userId,
         ascents,
+        error: null,
         isLoading: false,
       });
     } catch (error) {
