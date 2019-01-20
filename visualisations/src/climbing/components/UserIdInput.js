@@ -1,19 +1,11 @@
 import React from 'react';
 import { Input, Icon, Form, Button } from 'antd';
-import queryString from 'query-string';
-
-const query = queryString.parse(window.location.search);
+import {queryStringUserId} from '../utils/queryString'
 
 class UserIdInput extends React.Component {
-  state = {
-    userId: query && query.userId && /^[0-9]+$/.test(query.userId) ? query.userId : '',
-  };
+  state = { userId: queryStringUserId };
 
-  componentDidMount() {
-    this.handleSubmit();
-  }
-
-  checkUserId = value => /^[0-9]+$/.test(value)
+  checkUserId = value => /^[0-9]*$/.test(value)
 
   handleSubmit = (event) => {
     if(event) {
@@ -27,8 +19,8 @@ class UserIdInput extends React.Component {
 
   onClearUserId = () => {
     this.userIdInput.focus();
-    this.setState({ userId: '' });
-    this.props.onSubmit()
+    this.setState({ userId: undefined });
+    this.props.onSubmit(undefined)
   }
 
   onChangeUserId = (e) => {
@@ -42,7 +34,6 @@ class UserIdInput extends React.Component {
     const { userId } = this.state;
     const suffix = userId ? <Icon type="close-circle" onClick={this.onClearUserId} /> : null;
 
-    // Only show error after a field is touched.
     return (
       <Form layout="inline" onSubmit={this.handleSubmit}>
         <Form.Item>
@@ -64,10 +55,10 @@ class UserIdInput extends React.Component {
             Load ascents!
           </Button>
         </Form.Item>
+        <br /><br />
       </Form>
     );
   }
 }
 
 export default UserIdInput;
-

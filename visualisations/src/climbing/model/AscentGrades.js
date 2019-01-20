@@ -3,7 +3,7 @@ export const AscentGrades = {
         id: 0,
         score: 0,
         labels: {
-            fra: { routes: "", boulder: "" },
+            fra: { routes: "", boulders: "" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -11,7 +11,7 @@ export const AscentGrades = {
         id: 1,
         score: 0,
         labels: {
-            fra: { routes: "", boulder: "" },
+            fra: { routes: "", boulders: "" },
             usa: { routes: "3/4", boulders: "VB" }
         }
     },
@@ -19,7 +19,7 @@ export const AscentGrades = {
         id: 2,
         score: 80,
         labels: {
-            fra: { routes: "2", boulder: "2" },
+            fra: { routes: "2", boulders: "2" },
             usa: { routes: "5.1", boulders: "VB" }
         }
     },
@@ -27,7 +27,7 @@ export const AscentGrades = {
         id: 3,
         score: 100,
         labels: {
-            fra: { routes: "3a", boulder: "3A" },
+            fra: { routes: "3a", boulders: "3A" },
             usa: { routes: "5.3", boulders: "VB" }
         }
     },
@@ -35,7 +35,7 @@ export const AscentGrades = {
         id: 4,
         score: 120,
         labels: {
-            fra: { routes: "3b", boulder: "3B" },
+            fra: { routes: "3b", boulders: "3B" },
             usa: { routes: "5.3", boulders: "VB" }
         }
     },
@@ -43,7 +43,7 @@ export const AscentGrades = {
         id: 5,
         score: 140,
         labels: {
-            fra: { routes: "3c", boulder: "3C" },
+            fra: { routes: "3c", boulders: "3C" },
             usa: { routes: "5.3", boulders: "V0-" }
         }
     },
@@ -51,7 +51,7 @@ export const AscentGrades = {
         id: 6,
         score: 160,
         labels: {
-            fra: { routes: "4a", boulder: "4A" },
+            fra: { routes: "4a", boulders: "4A" },
             usa: { routes: "5.4", boulders: "V0" }
         }
     },
@@ -59,7 +59,7 @@ export const AscentGrades = {
         id: 7,
         score: 180,
         labels: {
-            fra: { routes: "4b", boulder: "4B" },
+            fra: { routes: "4b", boulders: "4B" },
             usa: { routes: "5.5", boulders: "V0" }
         }
     },
@@ -67,7 +67,7 @@ export const AscentGrades = {
         id: 8,
         score: 200,
         labels: {
-            fra: { routes: "4c", boulder: "4C" },
+            fra: { routes: "4c", boulders: "4C" },
             usa: { routes: "5.6", boulders: "V0" }
         }
     },
@@ -75,7 +75,7 @@ export const AscentGrades = {
         id: 9,
         score: 250,
         labels: {
-            fra: { routes: "5", boulder: "5" },
+            fra: { routes: "5", boulders: "5" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -83,7 +83,7 @@ export const AscentGrades = {
         id: 10,
         score: 250,
         labels: {
-            fra: { routes: "5a", boulder: "5A" },
+            fra: { routes: "5a", boulders: "5A" },
             usa: { routes: "5.7", boulders: "V1" }
         }
     },
@@ -91,7 +91,7 @@ export const AscentGrades = {
         id: 11,
         score: 300,
         labels: {
-            fra: { routes: "5b", boulder: "5B" },
+            fra: { routes: "5b", boulders: "5B" },
             usa: { routes: "5.8", boulders: "V1" }
         }
     },
@@ -99,7 +99,7 @@ export const AscentGrades = {
         id: 12,
         score: 350,
         labels: {
-            fra: { routes: "5c", boulder: "5C" },
+            fra: { routes: "5c", boulders: "5C" },
             usa: { routes: "5.9", boulders: "V2" }
         }
     },
@@ -107,7 +107,7 @@ export const AscentGrades = {
         id: 13,
         score: 400,
         labels: {
-            fra: { routes: "6", boulder: "6" },
+            fra: { routes: "6", boulders: "6" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -115,7 +115,7 @@ export const AscentGrades = {
         id: 14,
         score: 400,
         labels: {
-            fra: { routes: "6a", boulder: "6A" },
+            fra: { routes: "6a", boulders: "6A" },
             usa: { routes: "5.10a", boulders: "V3" }
         }
     },
@@ -123,7 +123,7 @@ export const AscentGrades = {
         id: 15,
         score: 450,
         labels: {
-            fra: { routes: "6a+", boulder: "6A+" },
+            fra: { routes: "6a+", boulders: "6A+" },
             usa: { routes: "5.10b", boulders: "V3/4" }
         }
     },
@@ -131,7 +131,7 @@ export const AscentGrades = {
         id: 16,
         score: 500,
         labels: {
-            fra: { routes: "6b", boulder: "6B" },
+            fra: { routes: "6b", boulders: "6B" },
             usa: { routes: "5.10c", boulders: "V4" }
         }
     },
@@ -139,7 +139,7 @@ export const AscentGrades = {
         id: 17,
         score: 550,
         labels: {
-            fra: { routes: "6b+", boulder: "6B+" },
+            fra: { routes: "6b+", boulders: "6B+" },
             usa: { routes: "5.10d", boulders: "V4/V5" }
         }
     },
@@ -147,7 +147,7 @@ export const AscentGrades = {
         id: 18,
         score: 600,
         labels: {
-            fra: { routes: "6c", boulder: "6C" },
+            fra: { routes: "6c", boulders: "6C" },
             usa: { routes: "5.11a", boulders: "V5" }
         }
     },
@@ -155,7 +155,7 @@ export const AscentGrades = {
         id: 19,
         score: 650,
         labels: {
-            fra: { routes: "6c+", boulder: "6C+" },
+            fra: { routes: "6c+", boulders: "6C+" },
             usa: { routes: "5.11b", boulders: "V5/V6" }
         }
     },
@@ -163,7 +163,7 @@ export const AscentGrades = {
         id: 20,
         score: 700,
         labels: {
-            fra: { routes: "7a", boulder: "7A" },
+            fra: { routes: "7a", boulders: "7A" },
             usa: { routes: "5.11d", boulders: "V6" }
         }
     },
@@ -171,7 +171,7 @@ export const AscentGrades = {
         id: 21,
         score: 750,
         labels: {
-            fra: { routes: "7a+", boulder: "7A+" },
+            fra: { routes: "7a+", boulders: "7A+" },
             usa: { routes: "5.12a", boulders: "V7" }
         }
     },
@@ -179,7 +179,7 @@ export const AscentGrades = {
         id: 22,
         score: 800,
         labels: {
-            fra: { routes: "7b", boulder: "7B" },
+            fra: { routes: "7b", boulders: "7B" },
             usa: { routes: "5.12b", boulders: "V8" }
         }
     },
@@ -187,7 +187,7 @@ export const AscentGrades = {
         id: 23,
         score: 850,
         labels: {
-            fra: { routes: "7b+", boulder: "7B+" },
+            fra: { routes: "7b+", boulders: "7B+" },
             usa: { routes: "5.12c", boulders: "V8/9" }
         }
     },
@@ -195,7 +195,7 @@ export const AscentGrades = {
         id: 24,
         score: 900,
         labels: {
-            fra: { routes: "7c", boulder: "7C" },
+            fra: { routes: "7c", boulders: "7C" },
             usa: { routes: "5.12d", boulders: "V9" }
         }
     },
@@ -203,7 +203,7 @@ export const AscentGrades = {
         id: 25,
         score: 950,
         labels: {
-            fra: { routes: "7c+", boulder: "7C+" },
+            fra: { routes: "7c+", boulders: "7C+" },
             usa: { routes: "5.13a", boulders: "V10" }
         }
     },
@@ -211,7 +211,7 @@ export const AscentGrades = {
         id: 26,
         score: 1000,
         labels: {
-            fra: { routes: "8a", boulder: "8A" },
+            fra: { routes: "8a", boulders: "8A" },
             usa: { routes: "5.13b", boulders: "V11" }
         }
     },
@@ -219,7 +219,7 @@ export const AscentGrades = {
         id: 27,
         score: 1050,
         labels: {
-            fra: { routes: "8a+", boulder: "8A+" },
+            fra: { routes: "8a+", boulders: "8A+" },
             usa: { routes: "5.13c", boulders: "V12" }
         }
     },
@@ -227,7 +227,7 @@ export const AscentGrades = {
         id: 28,
         score: 1100,
         labels: {
-            fra: { routes: "8b", boulder: "8B" },
+            fra: { routes: "8b", boulders: "8B" },
             usa: { routes: "5.13d", boulders: "V13" }
         }
     },
@@ -235,7 +235,7 @@ export const AscentGrades = {
         id: 29,
         score: 1150,
         labels: {
-            fra: { routes: "8b+", boulder: "8B+" },
+            fra: { routes: "8b+", boulders: "8B+" },
             usa: { routes: "5.14a", boulders: "V14" }
         }
     },
@@ -243,7 +243,7 @@ export const AscentGrades = {
         id: 30,
         score: 1200,
         labels: {
-            fra: { routes: "8c", boulder: "8C" },
+            fra: { routes: "8c", boulders: "8C" },
             usa: { routes: "5.14b", boulders: "V15" }
         }
     },
@@ -251,7 +251,7 @@ export const AscentGrades = {
         id: 31,
         score: 1225,
         labels: {
-            fra: { routes: "8c/+", boulder: "8C/+" },
+            fra: { routes: "8c/+", boulders: "8C/+" },
             usa: { routes: "5.14b/c", boulders: "V15/16" }
         }
     },
@@ -259,7 +259,7 @@ export const AscentGrades = {
         id: 32,
         score: 1250,
         labels: {
-            fra: { routes: "8c+", boulder: "8C+" },
+            fra: { routes: "8c+", boulders: "8C+" },
             usa: { routes: "5.14c", boulders: "V16" }
         }
     },
@@ -267,7 +267,7 @@ export const AscentGrades = {
         id: 33,
         score: 1275,
         labels: {
-            fra: { routes: "8c+/9a", boulder: "8C+/9A" },
+            fra: { routes: "8c+/9a", boulders: "8C+/9A" },
             usa: { routes: "5.14c/d", boulders: "V16/17" }
         }
     },
@@ -275,7 +275,7 @@ export const AscentGrades = {
         id: 34,
         score: 1300,
         labels: {
-            fra: { routes: "9a", boulder: "9A" },
+            fra: { routes: "9a", boulders: "9A" },
             usa: { routes: "5.14d", boulders: "V17" }
         }
     },
@@ -283,7 +283,7 @@ export const AscentGrades = {
         id: 35,
         score: 1325,
         labels: {
-            fra: { routes: "9a/+", boulder: "9A/+" },
+            fra: { routes: "9a/+", boulders: "9A/+" },
             usa: { routes: "5.14d/.15a", boulders: "V17/18" }
         }
     },
@@ -291,7 +291,7 @@ export const AscentGrades = {
         id: 36,
         score: 1350,
         labels: {
-            fra: { routes: "9a+", boulder: "9A+" },
+            fra: { routes: "9a+", boulders: "9A+" },
             usa: { routes: "5.15a", boulders: "V18" }
         }
     },
@@ -299,7 +299,7 @@ export const AscentGrades = {
         id: 37,
         score: 1375,
         labels: {
-            fra: { routes: "9a+/9b", boulder: "9A+/9B" },
+            fra: { routes: "9a+/9b", boulders: "9A+/9B" },
             usa: { routes: "5.15a/b", boulders: "V18/19" }
         }
     },
@@ -307,7 +307,7 @@ export const AscentGrades = {
         id: 38,
         score: 1400,
         labels: {
-            fra: { routes: "9b", boulder: "9B" },
+            fra: { routes: "9b", boulders: "9B" },
             usa: { routes: "5.15b", boulders: "V19" }
         }
     },
@@ -315,7 +315,7 @@ export const AscentGrades = {
         id: 39,
         score: 1425,
         labels: {
-            fra: { routes: "9b/+", boulder: "9B/+" },
+            fra: { routes: "9b/+", boulders: "9B/+" },
             usa: { routes: "5.15b/c", boulders: "V19/20" }
         }
     },
@@ -323,7 +323,7 @@ export const AscentGrades = {
         id: 40,
         score: 1450,
         labels: {
-            fra: { routes: "9b+", boulder: "9B+" },
+            fra: { routes: "9b+", boulders: "9B+" },
             usa: { routes: "5.15c", boulders: "V20" }
         }
     },
@@ -331,7 +331,7 @@ export const AscentGrades = {
         id: 41,
         score: 1475,
         labels: {
-            fra: { routes: "9b+/9c", boulder: "9B+/9C" },
+            fra: { routes: "9b+/9c", boulders: "9B+/9C" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -339,7 +339,7 @@ export const AscentGrades = {
         id: 42,
         score: 1500,
         labels: {
-            fra: { routes: "9c", boulder: "9C" },
+            fra: { routes: "9c", boulders: "9C" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -347,7 +347,7 @@ export const AscentGrades = {
         id: 43,
         score: 1525,
         labels: {
-            fra: { routes: "9c/+", boulder: "9C/+" },
+            fra: { routes: "9c/+", boulders: "9C/+" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -355,7 +355,7 @@ export const AscentGrades = {
         id: 44,
         score: 1550,
         labels: {
-            fra: { routes: "9c+", boulder: "9C+" },
+            fra: { routes: "9c+", boulders: "9C+" },
             usa: { routes: "", boulders: "" }
         }
     },
@@ -363,7 +363,7 @@ export const AscentGrades = {
         id: 45,
         score: 1575,
         labels: {
-            fra: { routes: "9c+/10a", boulder: "9C+/10A" },
+            fra: { routes: "9c+/10a", boulders: "9C+/10A" },
             usa: { routes: "", boulders: "" }
         }
     }

@@ -3,17 +3,17 @@ import xml2js from "xml2js";
 
 import * as localStorage from './localStorage'
 
-const fetchAscents = async userId => {
-  let text = localStorage.getAscents(userId);
+const fetchAscents = async (userId, ascentTypeShortHand) => {
+  let text = localStorage.getAscents(userId, ascentTypeShortHand);
   if (text) {
     return await promiseParseXml(text);
   }
 
-  const url = `https://cors-anywhere.herokuapp.com/https://www.8a.nu/scorecard/xml/${userId}_routes.xml`;
+  const url = `https://cors-anywhere.herokuapp.com/https://www.8a.nu/scorecard/xml/${userId}_${ascentTypeShortHand}.xml`;
   console.info('fetch', url)
   const response = await fetch(url);
   text = await response.text();
-  localStorage.saveAscents(userId, text);
+  localStorage.saveAscents(userId, ascentTypeShortHand, text);
 
   return await promiseParseXml(text);
 }
@@ -26,8 +26,7 @@ const promiseParseXml = text =>
           return reject(err)
         }
         
-        console.log('json', json)
-        console.log('json.ascentlist.ascent', json && json.ascentlist && json.ascentlist.ascent)
+        console.log('parsed JSON', json)
         return resolve(json.ascentlist.ascent)
       })
   );

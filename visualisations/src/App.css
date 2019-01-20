@@ -1,8 +1,7 @@
 @import '~antd/dist/antd.css';
 
 .App {
-  text-align: center;
-  padding: 50px;
+  padding: 5%
 }
 
 .App-logo {

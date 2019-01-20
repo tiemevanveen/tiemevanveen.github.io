@@ -1,12 +1,12 @@
-export const getAscents = userId => {
+export const getAscents = (userId, ascentTypeShortHand) => {
   try {
-    return JSON.parse(window.localStorage.getItem(`raw-ascents-${userId}`));
+    return JSON.parse(window.localStorage.getItem(`raw-${ascentTypeShortHand}-${userId}`));
   } catch (ex) { }
 }
 
-export const saveAscents = (userId, ascents) => {
+export const saveAscents = (userId, ascentTypeShortHand, ascents) => {
   try {
-    return window.localStorage.setItem(`raw-ascents-${userId}`, JSON.stringify(ascents));
+    return window.localStorage.setItem(`raw-${ascentTypeShortHand}-${userId}`, JSON.stringify(ascents));
   } catch (ex) { }
 }
 

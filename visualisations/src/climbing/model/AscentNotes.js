@@ -1,4 +1,4 @@
-export const AscentNotes = {
+const AscentNotes = {
     NOTE_FA: {
         name: "First Ascent",
         value: 1,
@@ -56,3 +56,5 @@ export const AscentNotes = {
         }
     }
 };
+
+export default AscentNotes;
