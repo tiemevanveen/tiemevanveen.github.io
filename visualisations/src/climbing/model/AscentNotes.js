@@ -1,59 +1,77 @@
+import AscentTypes from './AscentTypes'
+
 const AscentNotes = {
     NOTE_FA: {
-        name: "First Ascent",
+        label: "First Ascent",
         value: 1,
         score: {
             routes: 30, // was 10 once
             boulders: 20 // was 5 once..
-        }
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand, AscentTypes.BOULDERS.shorthand],
     },
     NOTE_2ND_GO: {
-        name: "Second Go",
+        label: "Second Go",
         value: 2,
         score: {
             routes: 2,
             boulders: 2
-        }
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand, AscentTypes.BOULDERS.shorthand],
     },
     NOTE_TRAD: {
-        name: "Traditional",
+        label: "Trad",
         value: 4,
         score: {
             routes: 30,
             boulders: 0
-        }
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand],
     },
     NOTE_SOFT: {
-        name: "Soft",
+        label: "Soft",
         value: 8,
         score: {
             routes: 0,
             boulders: 0
-        }
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand, AscentTypes.BOULDERS.shorthand],
     },
     NOTE_HARD: {
-        name: "Hard",
+        label: "Hard",
         value: 16,
         score: {
             routes: 0,
             boulders: 0
-        }
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand, AscentTypes.BOULDERS.shorthand],
     },
     NOTE_TRAV: {
-        name: "Traverse",
+        label: "Traverse",
         value: 32,
         score: {
             routes: 0,
             boulders: 0
-        }
+        },
+        ascentTypes: [AscentTypes.BOULDERS.shorthand],
     },
     NOTE_ONE_HANG: {
-        name: "One Hang",
+        label: "One Hang",
         value: 64,
         score: {
             routes: -128,
             boulders: 0
-        }
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand],
+    },
+    Other: {
+        label: "Other",
+        value: 128,
+        score: {
+            routes: 0,
+            boulders: 0
+        },
+        ascentTypes: [AscentTypes.ROUTES.shorthand, AscentTypes.BOULDERS.shorthand],
     }
 };
 

@@ -11,7 +11,7 @@ export const getArrayFromBitMask = (mask = 0) =>
  * bitmaskFlags = {
  *   SOME_CONST: {
  *     value: int,
- *     name: string
+ *     label: string
  *   },
  *   ...
  * };
@@ -21,7 +21,7 @@ export const getNamesArrayFromBitMask = (bitmaskFlags, mask = 0) => {
     const values = getArrayFromBitMask(mask);
     return Object.keys(bitmaskFlags).reduce(
         (res, key) =>
-            values.indexOf(bitmaskFlags[key].value) !== -1 ? [...res, bitmaskFlags[key].name] : res,
+            values.indexOf(bitmaskFlags[key].value) !== -1 ? [...res, bitmaskFlags[key].label] : res,
         []
     );
 };

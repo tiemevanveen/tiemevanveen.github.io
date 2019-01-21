@@ -1,14 +1,19 @@
 import React from "react";
+import { Button } from "antd";
+
 import AscentChart from "./components/AscentChart";
 import UserIdInput from "./components/UserIdInput";
 import AscentChartOptions from "./components/AscentChartOptions/AscentChartOptions";
+import AscentNoteOptions from "./components/AscentChartOptions/AscentNoteOptions";
 
 import AscentTypes from "./model/AscentTypes";
 import AscentMethods from "./model/AscentMethods";
 
+import * as storage from "./utils/localStorage";
 import fetchAscents from "./utils/fetchAscents";
 import transformAscents from "./utils/transformAscents";
 import { queryStringUserId, queryStringType } from "./utils/queryString";
+import AscentNotes from "./model/AscentNotes";
 
 class Ascents extends React.PureComponent {
   constructor(props) {
@@ -19,8 +24,12 @@ class Ascents extends React.PureComponent {
       isLoading: !!queryStringUserId,
       error: null,
       ascents: [],
+      ascentsLoadedFromCache: undefined,
       ascentMethodIds: Object.values(AscentMethods)
-        .map(a => a.id),
+        .filter(m => m !== AscentMethods.ATTEMPT)
+        .map(m => m.id),
+      ascentNoteValues: Object.values(AscentNotes)
+        .reduce((res, n) => res | n.value, 0),
       ascentTypeShortHand: queryStringType || AscentTypes.ROUTES.shorthand
     };
   }
@@ -30,6 +39,12 @@ class Ascents extends React.PureComponent {
       this.fetchAscents(this.state.userId, this.state.ascentTypeShortHand);
     }
   }
+
+  refreshAscents = e => {
+    e.preventDefault();
+    storage.removeAscents(this.state.userId, this.state.ascentTypeShortHand);
+    this.fetchAscents(this.state.userId, this.state.ascentTypeShortHand);
+  };
 
   fetchAscents = async (userId, ascentTypeShortHand) => {
     if (!userId || !ascentTypeShortHand) {
@@ -43,11 +58,12 @@ class Ascents extends React.PureComponent {
 
     try {
       this.setState({ isLoading: true });
-      const rawAscents = await fetchAscents(userId, ascentTypeShortHand);
-      const ascents = transformAscents(rawAscents);
+      const result = await fetchAscents(userId, ascentTypeShortHand);
+      const ascents = transformAscents(result.ascents);
       console.log("ascents", ascents);
       this.setState({
         userId,
+        ascentsLoadedFromCache: result.fromCache,
         ascents,
         error: null,
         isLoading: false
@@ -56,6 +72,7 @@ class Ascents extends React.PureComponent {
       console.log("error", error);
       this.setState({
         error: error.message,
+        ascentsLoadedFromCache: undefined,
         ascents: [],
         isLoading: false
       });
@@ -76,6 +93,10 @@ class Ascents extends React.PureComponent {
     });
   };
 
+  handleChangeNotes = ascentNoteValues => {
+    this.setState({ ascentNoteValues });
+  };
+
   onSubmitUserIdInput = userId => {
     if (userId && userId !== "") {
       return this.fetchAscents(userId, this.state.ascentTypeShortHand);
@@ -94,26 +115,34 @@ class Ascents extends React.PureComponent {
       isLoading,
       error,
       ascents,
+      ascentsLoadedFromCache,
       userId,
       ascentTypeShortHand,
-      ascentMethodIds
+      ascentMethodIds,
+      ascentNoteValues
     } = this.state;
 
     console.log("render Ascents", this.state);
 
     return (
       <div className="App">
-        <UserIdInput onSubmit={this.onSubmitUserIdInput} />
-
+        <UserIdInput
+          onSubmit={this.onSubmitUserIdInput}
+          userId={userId}
+          isLoading={isLoading}
+        />
         {!userId && !isLoading && (
           <p>
             You can find your userId on your profile page or scorecard:
             <br />
             <br />
-            <img src="8a.nu.png" width="50%" />
+            <img
+              src="8a.nu.png"
+              alt="8a.nu screenshot showing userId"
+              width="50%"
+            />
           </p>
         )}
-
         {userId && (
           <AscentChartOptions
             ascentTypeShortHand={ascentTypeShortHand}
@@ -121,20 +150,39 @@ class Ascents extends React.PureComponent {
             onChange={this.onChangeChartOptions}
           />
         )}
-
         <br />
         <br />
-
         {isLoading && <div>Loading...</div>}
-
         {error && <div>Error: {error}</div>}
-
         {userId && !isLoading && ascents.length > 0 && (
           <AscentChart
             ascents={ascents}
             ascentTypeShortHand={ascentTypeShortHand}
             ascentMethodIds={ascentMethodIds}
+            ascentNoteValues={ascentNoteValues}
           />
+        )}
+        <br />
+        
+        {userId && !isLoading && ascents.length > 0 && (
+          <p>
+            <h3>More options</h3>
+            <AscentNoteOptions
+              ascentTypeShortHand={ascentTypeShortHand}
+              onChange={this.handleChangeNotes}
+            />
+          </p>
+        )}
+        
+        <br />
+        {userId && !isLoading && ascents.length > 0 && ascentsLoadedFromCache && (
+          <p>
+            Ascents loaded from cache{" "}
+            <a href onClick={this.refreshAscents}>
+              refresh
+            </a>
+            .
+          </p>
         )}
       </div>
     );

@@ -6,7 +6,10 @@ import * as localStorage from './localStorage'
 const fetchAscents = async (userId, ascentTypeShortHand) => {
   let text = localStorage.getAscents(userId, ascentTypeShortHand);
   if (text) {
-    return await promiseParseXml(text);
+    return {
+      fromCache: true,
+      ascents: await promiseParseXml(text),
+    }
   }
 
   const url = `https://cors-anywhere.herokuapp.com/https://www.8a.nu/scorecard/xml/${userId}_${ascentTypeShortHand}.xml`;
@@ -15,7 +18,10 @@ const fetchAscents = async (userId, ascentTypeShortHand) => {
   text = await response.text();
   localStorage.saveAscents(userId, ascentTypeShortHand, text);
 
-  return await promiseParseXml(text);
+  return {
+    fromCache: false,
+    ascents: await promiseParseXml(text),
+  }
 }
 
 const promiseParseXml = text =>
@@ -26,6 +32,10 @@ const promiseParseXml = text =>
           return reject(err)
         }
         
+        if(!json.ascentlist.ascent) {
+          return reject(new Error("Loading ascents failed..."));
+        }
+
         console.log('parsed JSON', json)
         return resolve(json.ascentlist.ascent)
       })

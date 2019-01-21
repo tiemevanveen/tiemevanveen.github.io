@@ -1,8 +1,8 @@
 import { getNamesArrayFromBitMask } from "./bitmaskUtils";
-import AscentMethods, {AscentMethodMap} from "../model/AscentMethods";
+import {AscentMethodMap} from "../model/AscentMethods";
 import AscentNotes from "../model/AscentNotes";
 import { getAscentTypeById } from "./ascentUtils";
-import { AscentGradeMapping, AscentGrades } from "../model/AscentGrades";
+import AscentGrades, { AscentGradeMapping } from "../model/AscentGrades";
 
 const transformAscents = ascents => ascents
   // skip database additions that are not ascents
@@ -12,7 +12,7 @@ const transformAscents = ascents => ascents
     ascent.type = getAscentTypeById(ascent.type);
 
     // set attempt methods
-    if (ascent.objectclass === "CLS_UserAscent_Try") {
+    if (ascent.objectclass === "CLS_UserAscent_Try" || ascent.note & AscentNotes.NOTE_ONE_HANG) {
       ascent.style = "6"
     }
 
@@ -29,9 +29,10 @@ const transformAscents = ascents => ascents
       console.error("gradeId not found", ascent.grade);
     }
     ascent.grade = AscentGrades[newGradeId];
-    
-    // 2nd go, firt ascent etc
-    ascent.notes = getNamesArrayFromBitMask(AscentNotes, ascent.note);
+    ascent.note = parseInt(ascent.note, 10)
+    if(ascent.note === 0) {
+      ascent.note = AscentNotes.Other.value
+    }
 
     return ascent;
   }).filter(ascent => ascent)

@@ -6,7 +6,7 @@ import memoize from "memoize-one";
 
 // import { format } from "d3-format";
 
-import { TimeSeries, TimeRange, count } from "pondjs";
+import { TimeSeries, TimeRange } from "pondjs";
 
 import {
   ChartContainer,
@@ -19,7 +19,7 @@ import {
   // styler,
 } from "react-timeseries-charts";
 
-import { AscentGrades } from "../model/AscentGrades";
+import AscentGrades from "../model/AscentGrades";
 
 // const style = styler([
 //   { key: "distance", color: "#e2e2e2" },
@@ -130,28 +130,27 @@ class AscentChart extends React.Component {
     console.log("AscentChart: ", props);
   }
   getChartData = () =>
-    this.getMemoizedChartData(this.props.ascents, this.props.ascentMethodIds);
+    this.getMemoizedChartData(this.props.ascents, this.props.ascentMethodIds, this.props.ascentNoteValues);
 
   // Re-run the function whenever arguments change:
-  getMemoizedChartData = memoize((ascents, ascentMethodIds) => {
-    console.log('caculateSeries')
-
+  getMemoizedChartData = memoize((ascents, ascentMethodIds, ascentNoteValues) => {
     const chartSeries = new TimeSeries({
       name: "Ascents",
       columns: ["time", "ascent"],
       points: ascents
         .filter(ascent => ascentMethodIds.includes(ascent.method.id))
+        .filter(ascent => !ascentNoteValues || (ascent.note & ascentNoteValues))
         .map(ascent => [new Moment(ascent.date).toDate().getTime(), ascent])
     });
 
-    if (!chartSeries || !chartSeries.range()) {
-      return {};
-    }
+    // if (!chartSeries || !chartSeries.range() || ascents.length === 0) {
+    //   return {};
+    // }
 
     console.log("chartSeries", chartSeries.toJSON());
 
-    let begin = Moment(chartSeries.range().begin());
-    let end = Moment(chartSeries.range().end());
+    let begin = ascents.length >= 1 ? new Moment(ascents[0].date) : new Moment('1900-01-01');
+    let end = new Moment(ascents.length >= 2 ? ascents[ascents.length - 1].date : new Date());
 
     // add some padding so all points will always fit the chart
     let diff = end.diff(begin, "days");

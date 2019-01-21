@@ -2,10 +2,9 @@
 
 import React from "react";
 
-
 import AscentMethodOptions from "./AscentMethodOptions";
+import AscentTypeSelector from "./AscentTypeSelector";
 
-import AscentTypeSelector from './AscentTypeSelector'
 const colors = {
   redpoint: "#f03c3c",
   flash: "#ffca10",
@@ -18,10 +17,6 @@ class AscentChartOptions extends React.Component {
   handleChangeOptions = newOptions => {
     // this.setState(newOptions);
     this.props.onChange(newOptions);
-  };
-
-  handleChangeMethod = ascentMethodIds => {
-    this.handleChangeOptions({ ascentMethodIds });
   };
 
   handleChangeAscentType = ascentTypeShortHand => {
@@ -38,9 +33,10 @@ class AscentChartOptions extends React.Component {
           ascentTypeShortHand={ascentTypeShortHand}
           onChange={this.handleChangeAscentType}
         />
+        &nbsp; &nbsp;
         <AscentMethodOptions
           ascentTypeShortHand={ascentTypeShortHand}
-          onChange={this.handleChangeMethod}
+          onChange={this.handleChangeMethods}
         />
       </div>
     );

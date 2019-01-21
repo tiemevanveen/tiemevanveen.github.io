@@ -10,6 +10,12 @@ export const saveAscents = (userId, ascentTypeShortHand, ascents) => {
   } catch (ex) { }
 }
 
+export const removeAscents = (userId, ascentTypeShortHand) => {
+  try {
+    return window.localStorage.removeItem(`raw-${ascentTypeShortHand}-${userId}`);
+  } catch (ex) { }
+}
+
 export const clearCache = () => {
   try {
     window.localStorage.clear();

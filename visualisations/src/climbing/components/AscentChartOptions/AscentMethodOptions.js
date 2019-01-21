@@ -11,13 +11,12 @@ class AscentMethodOptions extends React.Component {
   render() {
     const { ascentTypeShortHand } = this.props;
     const methods = Object.values(AscentMethods)
-      
       .filter(method => method.ascentTypes.includes(ascentTypeShortHand))
       .map(method => ({ label: method.label, value: method.id }));
+
     const defaultValue = Object.values(AscentMethods)
-      
+      .filter(m => m !== AscentMethods.ATTEMPT)
       .map(m => m.id)
-      .filter(id => id !== 6); /* attempt */
     return (
       <Checkbox.Group
         options={methods}
