@@ -1,10 +1,10 @@
 import React from "react";
 import AscentChart from "./components/AscentChart";
 import UserIdInput from "./components/UserIdInput";
-import AscentTypeSelector from "./components/AscentTypeSelector";
-import AscentChartOptions from "./components/AscentChartOptions";
+import AscentChartOptions from "./components/AscentChartOptions/AscentChartOptions";
 
 import AscentTypes from "./model/AscentTypes";
+import AscentMethods from "./model/AscentMethods";
 
 import fetchAscents from "./utils/fetchAscents";
 import transformAscents from "./utils/transformAscents";
@@ -14,14 +14,15 @@ class Ascents extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const ascentTypeShortHand = (this.state = {
+    this.state = {
       userId: queryStringUserId,
       isLoading: !!queryStringUserId,
       error: null,
       ascents: [],
-      ascentTypeShortHand: queryStringType || AscentTypes.ROUTES.shorthand,
-      ascentChartOptions: AscentChartOptions.defaultState
-    });
+      ascentMethodIds: Object.values(AscentMethods)
+        .map(a => a.id),
+      ascentTypeShortHand: queryStringType || AscentTypes.ROUTES.shorthand
+    };
   }
 
   componentDidMount() {
@@ -61,8 +62,19 @@ class Ascents extends React.PureComponent {
     }
   };
 
-  onChangeChartOptions = ascentChartOptions =>
-    this.setState({ ascentChartOptions });
+  onChangeChartOptions = options => {
+    // todo different
+    if (
+      typeof options.ascentTypeShortHand !== "undefined" &&
+      options.ascentTypeShortHand !== this.state.ascentTypeShortHand
+    ) {
+      this.fetchAscents(this.state.userId, options.ascentTypeShortHand);
+    }
+
+    this.setState({
+      ...options
+    });
+  };
 
   onSubmitUserIdInput = userId => {
     if (userId && userId !== "") {
@@ -77,11 +89,6 @@ class Ascents extends React.PureComponent {
     });
   };
 
-  onChangeAscentType = ascentTypeShortHand => {
-    this.setState({ ascentTypeShortHand });
-    this.fetchAscents(this.state.userId, ascentTypeShortHand);
-  };
-
   render() {
     const {
       isLoading,
@@ -89,7 +96,7 @@ class Ascents extends React.PureComponent {
       ascents,
       userId,
       ascentTypeShortHand,
-      ascentChartOptions
+      ascentMethodIds
     } = this.state;
 
     console.log("render Ascents", this.state);
@@ -107,19 +114,16 @@ class Ascents extends React.PureComponent {
           </p>
         )}
 
-        <div>
-          <AscentTypeSelector
-            userId={userId}
-            ascentTypeShortHand={ascentTypeShortHand}
-            onChange={this.onChangeAscentType}
-          />
-          &nbsp; &nbsp; &nbsp;
+        {userId && (
           <AscentChartOptions
             ascentTypeShortHand={ascentTypeShortHand}
+            ascentMethodIds={ascentMethodIds}
             onChange={this.onChangeChartOptions}
           />
-          <br /><br />
-        </div>
+        )}
+
+        <br />
+        <br />
 
         {isLoading && <div>Loading...</div>}
 
@@ -128,8 +132,8 @@ class Ascents extends React.PureComponent {
         {userId && !isLoading && ascents.length > 0 && (
           <AscentChart
             ascents={ascents}
-            {...ascentChartOptions}
             ascentTypeShortHand={ascentTypeShortHand}
+            ascentMethodIds={ascentMethodIds}
           />
         )}
       </div>

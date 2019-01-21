@@ -1,9 +1,7 @@
-/* eslint max-len:0 */
-
 import React from "react";
 import { Radio } from "antd";
 
-import AscentTypes from "../model/AscentTypes";
+import AscentTypes from "../../model/AscentTypes";
 
 class AscentTypeSelector extends React.Component {
   handleChangeType = e => {
@@ -15,12 +13,12 @@ class AscentTypeSelector extends React.Component {
     const { ascentTypeShortHand } = this.props;
     return (
       <Radio.Group value={ascentTypeShortHand} onChange={this.handleChangeType}>
-          {Object.values(AscentTypes).map(type => (
-            <Radio.Button key={type.id} value={type.shorthand}>
-              {type.label}
-            </Radio.Button>
-          ))}
-        </Radio.Group>
+        {Object.values(AscentTypes).map(type => (
+          <Radio.Button key={type.id} value={type.shorthand}>
+            {type.label}
+          </Radio.Button>
+        ))}
+      </Radio.Group>
     );
   }
 }
