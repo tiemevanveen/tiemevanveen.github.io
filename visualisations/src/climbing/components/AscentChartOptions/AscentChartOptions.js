@@ -23,6 +23,11 @@ class AscentChartOptions extends React.Component {
     this.handleChangeOptions({ ascentTypeShortHand });
   };
 
+
+  handleChangeMethods = ascentMethodIds => {
+    this.handleChangeOptions({ ascentMethodIds });
+  };
+
   render() {
     const { ascentTypeShortHand, userId } = this.props;
 
