@@ -16,8 +16,6 @@ body {
     margin: 0 5%;
 }
 
-
-
 .title {
     font-family: 'PT Mono', monospace;
 }
@@ -25,7 +23,6 @@ body {
 .developer {
     display: inline-block;
 }
-
 
 article {
     margin-top: 2.5em;
@@ -35,6 +32,19 @@ article {
     font-size: 2em;
     font-family: 'PT Mono', monospace;
     line-height: 1.5em;
+}
+
+.inline {
+    display: inline-block;
+}
+
+img {
+    width: 64px;
+    vertical-align: middle;
+}
+
+li {
+    padding-bottom: 1.5em;
 }
 
 h2, h3, h4, h5 {
